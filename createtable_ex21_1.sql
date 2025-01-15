@@ -20,3 +20,4 @@ VALUES ('Ven', 'Massicot', 147, NULL, NULL, '21:18', 'Défaut de lame'),
        ('Mar', 'Presse', 89, 6, 55, '08:28', 'Recadrage'),
        ('Mar', 'Presse', 132, 8, 68, '09:58', 'Changement encre'),
        ('Mer', 'Massicot', 111, NULL, NULL, '10:17', 'Graissage coulisseau');
+SELECT * FROM tableMaintenance;

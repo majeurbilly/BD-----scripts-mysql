@@ -19,3 +19,4 @@ INSERT INTO Animal (espece, sexe, date_naissance, nom)
 VALUES ('chien ', 'F', '2008-12-06 05:18:00', 'Caroline'),
        ('chat ', 'M', '2008-09-11 15:38:00', 'Bagherra'),
        ('tortue ', NULL, '2010-08-23 05:18:00', NULL);
+SELECT * FROM  Animal;
