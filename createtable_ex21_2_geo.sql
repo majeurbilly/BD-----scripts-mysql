@@ -3,13 +3,14 @@ CREATE DATABASE createtable_ex21_2;
 USE createtable_ex21_2;
 CREATE TABLE tableProvaince
 (
-    nom        VARCHAR(30)     NOT NULL,
-    code       VARCHAR(2)      NOT NULL,
-    date       DATE            NOT NULL,
-    population INT             NOT NULL,
-    superficie INT PRIMARY KEY NOT NULL,
-    densiter   FLOAT           NOT NULL,
-    capitale   VARCHAR(30)     NOT NULL
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nom        VARCHAR(30) NOT NULL,
+    code       VARCHAR(2)  NOT NULL,
+    date       DATE        NOT NULL,
+    population INT         NOT NULL,
+    superficie INT         NOT NULL,
+    densiter   FLOAT       NOT NULL,
+    capitale   VARCHAR(30) NOT NULL
 );
 ALTER TABLE tableProvaince
     ADD COLUMN dateMAJ TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
@@ -43,16 +44,24 @@ FROM tablepays;
 /* ================================================== */
 CREATE TABLE tableville
 (
-    capitale VARCHAR(30) NOT NULL
+    capitale VARCHAR(30)
 );
-INSERT INTO tableville (capitale)
-SELECT capitale
-FROM tableProvaince;
 /* ================================================== */
 ALTER TABLE tableville
-    ADD COLUMN superficie INT DEFAULT tableProvaince.superficie ON UPDATE tableProvaince.superficie;
+    ADD id INT;
+INSERT INTO tableville (id)
+SELECT id
+FROM tableProvaince;
 DESCRIBE tableville;
 SELECT *
 FROM tableville;
+/* ================================================== */
+ALTER TABLE tableProvaince
+    ADD CONSTRAINT fk_tableprovince_tableville
+        FOREIGN KEY (...)
+            REFERENCES tableville (...);
+/* ================================================== */
 
-
+/* ================================================== */
+ALTER TABLE tablepays
+    ADD
