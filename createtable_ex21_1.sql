@@ -4,13 +4,14 @@ USE createtable_ex21_1;
 DROP TABLE IF EXISTS tableMaintenance;
 CREATE TABLE tableMaintenance
 (
-    jour        VARCHAR(3)  NOT NULL,
-    machine     VARCHAR(8)  NOT NULL,
-    numero      INT         NOT NULL,
+    id          INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    jour        VARCHAR(3)      NOT NULL,
+    machine     VARCHAR(8)      NOT NULL,
+    numero      INT             NOT NULL,
     vitesse     FLOAT,
     temperature INT,
-    heure       TIME        NOT NULL,
-    envenement  VARCHAR(50) NOT NULL
+    heure       TIME            NOT NULL,
+    envenement  VARCHAR(50)     NOT NULL
 );
 INSERT INTO tableMaintenance (jour, machine, numero, vitesse, temperature, heure, envenement)
 VALUES ('Ven', 'Massicot', 147, NULL, NULL, '21:18', 'Défaut de lame'),
@@ -20,4 +21,6 @@ VALUES ('Ven', 'Massicot', 147, NULL, NULL, '21:18', 'Défaut de lame'),
        ('Mar', 'Presse', 89, 6, 55, '08:28', 'Recadrage'),
        ('Mar', 'Presse', 132, 8, 68, '09:58', 'Changement encre'),
        ('Mer', 'Massicot', 111, NULL, NULL, '10:17', 'Graissage coulisseau');
-SELECT * FROM tableMaintenance;
+DESCRIBE tableMaintenance;
+SELECT *
+FROM tableMaintenance;

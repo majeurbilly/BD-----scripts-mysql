@@ -46,7 +46,7 @@ FROM tablepays;
 /* ================================================== */
 CREATE TABLE tableville
 (
-    id       INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id       INT PRIMARY KEY NOT NULL,
     nom VARCHAR(30)
 );
 INSERT INTO tableville (tableville.nom)
