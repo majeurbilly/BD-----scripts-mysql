@@ -35,7 +35,7 @@ FROM tableProvaince;
 /* ================================================== */
 CREATE TABLE tablepays
 (
-    id   INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id   INT /*PRIMARY KEY NOT NULL AUTO_INCREMENT*/,
     pays VARCHAR(50)     NOT NULL
 );
 DESCRIBE tablepays;
@@ -46,11 +46,11 @@ FROM tablepays;
 /* ================================================== */
 CREATE TABLE tableville
 (
-    id       INT PRIMARY KEY NOT NULL,
+    id       INT,
     nom VARCHAR(30)
 );
 INSERT INTO tableville (tableville.nom)
-SELECT tableProvaince.capitale
+SELECT capitale
 FROM tableProvaince;
 
 DESCRIBE tableville;
@@ -58,12 +58,14 @@ SELECT *
 FROM tableville;
 /* ================================================== */
 ALTER TABLE tableville
+    ADD COLUMN code_ville VARCHAR(2);
+INSERT INTO tableville (tableville.code_ville)
+    SELECT code
+        FROM tableProvaince;
+ALTER TABLE tableville
     ADD CONSTRAINT fk_tableprovince_tableville
         FOREIGN KEY (nom)
-            REFERENCES tableProvaince (capitale);
+            REFERENCES tableProvaince (code);
 /* ================================================== */
-ALTER TABLE tableProvaince
-    ADD CONSTRAINT fk_tableprovince_tableville
-        FOREIGN KEY (capitale)
-            REFERENCES tableville (nom);
-/* ================================================== */
+SELECT *
+FROM tableville;
