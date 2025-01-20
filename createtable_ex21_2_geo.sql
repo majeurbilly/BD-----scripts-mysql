@@ -3,13 +3,14 @@ CREATE DATABASE createtable_ex21_2;
 USE createtable_ex21_2;
 CREATE TABLE tableProvaince
 (
-    nom        VARCHAR(30) NOT NULL,
-    code       VARCHAR(2)  NOT NULL PRIMARY KEY,
-    date       DATE        NOT NULL,
-    population INT         NOT NULL,
-    superficie INT         NOT NULL,
-    densite    FLOAT       NOT NULL,
-    capitale   VARCHAR(30) NOT NULL
+    id       INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nom        VARCHAR(30) NOT NULL DEFAULT 'NO NAME',
+    code       VARCHAR(2)  NOT NULL DEFAULT 'NA',
+    date       DATE        NOT NULL DEFAULT CURRENT_DATE,
+    population INT         NOT NULL DEFAULT 000,
+    superficie INT         NOT NULL DEFAULT 000,
+    densite    FLOAT       NOT NULL DEFAULT 000,
+    capitale   VARCHAR(30) NOT NULL DEFAULT 'NO NAME'
 );
 ALTER TABLE tableProvaince
     ADD COLUMN dateMAJ TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
@@ -33,9 +34,10 @@ VALUES ('Alberta', 'AB', '1905-09-01', 4067175, 661848, 6.15, 'Edmonton'),
 SELECT *
 FROM tableProvaince;
 /* ================================================== */
+DROP TABLE IF EXISTS tablepays;
 CREATE TABLE tablepays
 (
-    id   INT /*PRIMARY KEY NOT NULL AUTO_INCREMENT*/,
+    id   INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     pays VARCHAR(50)     NOT NULL
 );
 DESCRIBE tablepays;
@@ -44,34 +46,33 @@ INSERT INTO tablepays (pays)
 SELECT *
 FROM tablepays;
 /* ================================================== */
+DROP TABLE IF EXISTS tableville;
 CREATE TABLE tableville
 (
-    id       INT,
-    nom VARCHAR(30)
+    id       INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(30) DEFAULT NULL
 );
-INSERT INTO tableville (tableville.nom)
-SELECT capitale
-FROM tableProvaince;
-
 DESCRIBE tableville;
 SELECT *
 FROM tableville;
 /* ================================================== */
 ALTER TABLE tableville
     ADD COLUMN code_ville VARCHAR(2);
-INSERT INTO tableville (tableville.code_ville)
-    SELECT code
-        FROM tableProvaince;
 ALTER TABLE tableville
     ADD CONSTRAINT fk_tableprovince_tableville
         FOREIGN KEY (nom)
             REFERENCES tableProvaince (code);
-/* ================================================== */
+INSERT INTO tableville (tableville.nom)
+SELECT capitale
+FROM tableProvaince;
+INSERT INTO tableville (tableville.code_ville)
+    SELECT code
+        FROM tableProvaince;
 SELECT *
 FROM tableville;
 /* ================================================== */
 ALTER TABLE tableProvaince
-        ADD COLUMN idville INT;
+        ADD COLUMN idville INT NOT NULL ;
 INSERT INTO tableProvaince (tableProvaince.idville)
         SELECT id
             FROM tableville;
