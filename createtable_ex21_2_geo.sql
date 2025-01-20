@@ -69,3 +69,26 @@ ALTER TABLE tableville
 /* ================================================== */
 SELECT *
 FROM tableville;
+/* ================================================== */
+ALTER TABLE tableProvaince
+        ADD COLUMN idville INT;
+INSERT INTO tableProvaince (tableProvaince.idville)
+        SELECT id
+            FROM tableville;
+/* ================================================== */
+DESCRIBE tableville;
+SELECT *
+FROM tableville;
+/* ================================================== */
+ALTER TABLE tablepays
+    ADD COLUMN dateMAJ TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+DESCRIBE tablepays;
+SELECT *
+FROM tablepays;
+/* ================================================== */
+ALTER TABLE tableville
+    ADD COLUMN dateMAJ TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+DESCRIBE tableville;
+SELECT *
+FROM tableville;
+/* ================================================== */
