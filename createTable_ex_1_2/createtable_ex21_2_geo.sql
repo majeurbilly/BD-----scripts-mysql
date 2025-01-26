@@ -1,6 +1,8 @@
 DROP DATABASE IF EXISTS createtable_ex21_2;
+/* ================================================== */
 CREATE DATABASE createtable_ex21_2;
 USE createtable_ex21_2;
+/* ================================================== */
 CREATE TABLE tableProvaince
 (
     id       INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
