@@ -1,6 +1,9 @@
 DROP DATABASE IF EXISTS elevage;
+/* ================================================== */
 CREATE DATABASE elevage CHARACTER SET 'utf8';
+/* ================================================== */
 USE elevage;
+/* ================================================== */
 CREATE TABLE Animal
 (
     id             SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
