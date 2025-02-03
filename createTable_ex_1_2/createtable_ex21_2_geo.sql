@@ -1,19 +1,22 @@
 DROP DATABASE IF EXISTS createtable_ex21_2;
-/* ================================================== */
 CREATE DATABASE createtable_ex21_2;
 USE createtable_ex21_2;
 /* ================================================== */
 CREATE TABLE tableProvaince
 (
-    id       INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nom        VARCHAR(30) NOT NULL DEFAULT 'NO NAME',
-    code       VARCHAR(2)  NOT NULL DEFAULT 'NA',
-    date       DATE        NOT NULL DEFAULT CURRENT_DATE,
+    nom        VARCHAR(30) NOT NULL,
+    code       VARCHAR(2)  NOT NULL,
+    date       DATE        DEFAULT '1111-11-11',
     population INT         NOT NULL DEFAULT 000,
     superficie INT         NOT NULL DEFAULT 000,
     densite    FLOAT       NOT NULL DEFAULT 000,
     capitale   VARCHAR(30) NOT NULL DEFAULT 'NO NAME'
 );
+/* ================================================== */
+/* ================================================== */
+ALTER TABLE tableProvaince
+    ADD COLUMN idProvince INT UNSIGNED AUTO_INCREMENT PRIMARY KEY FIRST;
+/* ================================================== */
 /* ================================================== */
 ALTER TABLE tableProvaince
     ADD COLUMN dateMAJ TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
@@ -36,11 +39,13 @@ VALUES ('Alberta', 'AB', '1905-09-01', 4067175, 661848, 6.15, 'Edmonton'),
 /* ================================================== */
 DROP TABLE IF EXISTS tablepays;
 /* ================================================== */
+/* ==================UNSIGNED================================ */
 CREATE TABLE tablepays
 (
-    id   INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id   INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     pays VARCHAR(50)     NOT NULL
 );
+/* ==================UNSIGNED = pas de négatif number============================== */
 /* ================================================== */
 INSERT INTO tablepays (pays)
     VALUE ('Canada');
@@ -48,7 +53,7 @@ INSERT INTO tablepays (pays)
 DROP TABLE IF EXISTS tableville;
 CREATE TABLE tableville
 (
-    id       INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id       INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nom VARCHAR(30) DEFAULT NULL
 );
 /* ================================================== */
@@ -56,9 +61,7 @@ ALTER TABLE tableville
     ADD COLUMN code_ville VARCHAR(2);
 /* ================================================== */
 ALTER TABLE tableville
-    ADD CONSTRAINT fk_tableprovince_tableville
-        FOREIGN KEY (nom)
-            REFERENCES tableProvaince (code);
+    ADD CONSTRAINT fk_tableprovince_tableville FOREIGN KEY (nom) REFERENCES tableProvaince (code);
 /* ================================================== */
 INSERT INTO tableville (tableville.nom)
 SELECT capitale

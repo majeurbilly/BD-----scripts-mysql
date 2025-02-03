@@ -65,6 +65,9 @@ CREATE TABLE ville(
     idVille INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(30) NOT NULL
 ) Engine = InnoDB;
+
+
+
 -- Dans la table ville, ajoutez une clef étrangère vers la table province
 ALTER TABLE ville
 ADD COLUMN idProvince INT UNSIGNED NOT NULL;
