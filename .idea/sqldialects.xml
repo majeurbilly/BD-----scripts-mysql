@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/1 et 2 - Exercices 02.1 - 02.2 - Création de tables/createtable_ex21_1.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/13-2 Exercice dates/src/rempart_init_bd.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/14-3 Exercice valeurs par défaut/14-3_Exercice_valeurs_par_défaut.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/152_Exercices_vue_tempo/153_Devoir.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/152_Exercices_vue_tempo/153_Marketing.sql" dialect="MySQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>
